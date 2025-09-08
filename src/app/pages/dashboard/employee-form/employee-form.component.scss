@@ -76,7 +76,7 @@
 
   .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
     gap: 2rem;
     margin-bottom: 1.5rem;
   }
@@ -94,12 +94,13 @@
 
     input,
     select {
-      width: 100%;
+      //   width: 100%;
       padding: 0.875rem;
       border: 2px solid #e0e6ed;
       border-radius: 8px;
       font-size: 1rem;
       transition: all 0.2s ease;
+      //   min-width: 320px;
 
       &:focus {
         outline: none;
