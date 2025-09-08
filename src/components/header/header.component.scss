@@ -1,0 +1,209 @@
+// src/app/components/header/header.component.scss
+.app-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .header-left {
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+
+      .logo-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+
+        svg {
+          width: 24px;
+          height: 24px;
+          color: white;
+        }
+      }
+
+      .brand-info {
+        display: flex;
+        flex-direction: column;
+
+        .brand-name {
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0;
+          line-height: 1;
+          letter-spacing: -0.02em;
+        }
+
+        .brand-subtitle {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          font-weight: 500;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+
+  .header-center {
+    flex: 1;
+    text-align: center;
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  .header-right {
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--hover-bg);
+        transform: scale(1.05);
+      }
+
+      .toggle-track {
+        width: 60px;
+        height: 32px;
+        background: var(--toggle-bg);
+        border-radius: 20px;
+        position: relative;
+        border: 2px solid var(--border-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .toggle-thumb {
+          width: 26px;
+          height: 26px;
+          background: var(--toggle-thumb-bg);
+          border-radius: 50%;
+          position: absolute;
+          top: 1px;
+          left: 1px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+          &.dark {
+            transform: translateX(28px);
+            background: var(--toggle-thumb-dark-bg);
+          }
+
+          .icon {
+            width: 16px;
+            height: 16px;
+            color: var(--toggle-icon-color);
+            transition: all 0.3s ease;
+
+            &.sun-icon {
+              color: #f39c12;
+            }
+
+            &.moon-icon {
+              color: #f1c40f;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    .header-container {
+      padding: 0 1rem;
+      height: 60px;
+    }
+
+    .header-center {
+      .page-title {
+        font-size: 1.25rem;
+      }
+    }
+
+    .header-left {
+      .logo-container {
+        gap: 0.75rem;
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .brand-info {
+          .brand-name {
+            font-size: 1.5rem;
+          }
+
+          .brand-subtitle {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    .header-center {
+      display: none;
+    }
+
+    .header-left {
+      .logo-container {
+        .brand-info {
+          .brand-subtitle {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

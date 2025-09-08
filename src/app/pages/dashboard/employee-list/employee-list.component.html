@@ -1,0 +1,71 @@
+<div class="employee-list">
+  <div class="table-container">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Position</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Hire Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let employee of employees; trackBy: trackByEmployeeId"
+          [class.inactive]="!employee.isActive"
+        >
+          <td class="employee-name">
+            <div class="name-container">
+              <div class="avatar">
+                {{ getInitials(employee.firstName, employee.lastName) }}
+              </div>
+              <span>{{ employee.firstName }} {{ employee.lastName }}</span>
+            </div>
+          </td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.department }}</td>
+          <td class="salary">
+            {{ employee.salary | currency : "INR" : "symbol" : "1.0-0" }}
+          </td>
+          <td>{{ employee.hireDate | date : "MMM d, y" }}</td>
+          <td>
+            <span
+              class="status-badge"
+              [class.active]="employee.isActive"
+              [class.inactive]="!employee.isActive"
+            >
+              {{ employee.isActive ? "Active" : "Inactive" }}
+            </span>
+          </td>
+          <td class="actions">
+            <button
+              class="btn btn-sm btn-outline"
+              (click)="onEdit(employee)"
+              title="Edit Employee"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="onDelete(employee)"
+              title="Delete Employee"
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="employees.length === 0" class="empty-state">
+      <div class="empty-icon">👥</div>
+      <h3>No employees found</h3>
+      <p>Start by adding your first employee to the system.</p>
+    </div>
+  </div>
+</div>
