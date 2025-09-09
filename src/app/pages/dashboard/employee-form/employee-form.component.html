@@ -29,7 +29,7 @@
                 [class.error]="isFieldInvalid('firstName')"
               />
               <div class="error-message" *ngIf="isFieldInvalid('firstName')">
-                First name is required (minimum 2 characters)
+                First name is required (minimum 3 characters)
               </div>
             </div>
 
@@ -42,7 +42,7 @@
                 [class.error]="isFieldInvalid('lastName')"
               />
               <div class="error-message" *ngIf="isFieldInvalid('lastName')">
-                Last name is required (minimum 2 characters)
+                Last name is required (minimum 3 characters)
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
                 formControlName="department"
                 [class.error]="isFieldInvalid('department')"
               >
-                <option value="">Select Department</option>
+                <option value="null">Select Department</option>
                 <option value="Engineering">Engineering</option>
                 <option value="Product">Product</option>
                 <option value="Marketing">Marketing</option>
@@ -111,7 +111,7 @@
             <div class="form-group">
               <label for="salary">Annual Salary *</label>
               <div class="input-group">
-                <span class="input-prefix">$</span>
+                <span class="input-prefix">₹</span>
                 <input
                   type="number"
                   id="salary"
@@ -137,10 +137,15 @@
                 type="date"
                 id="hireDate"
                 formControlName="hireDate"
+                [max]="maxDate"
                 [class.error]="isFieldInvalid('hireDate')"
               />
               <div class="error-message" *ngIf="isFieldInvalid('hireDate')">
-                Hire date is required
+                <span
+                  *ngIf="employeeForm.get('hireDate')?.errors?.['required']"
+                >
+                  Hire date is required
+                </span>
               </div>
             </div>
           </div>

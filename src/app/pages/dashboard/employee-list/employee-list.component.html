@@ -3,19 +3,33 @@
     <table class="employee-table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th
+            class="sortable"
+            (click)="sortBy('name')"
+            [class.active]="sortColumn === 'name'"
+          >
+            Name
+            <i [class]="getSortIcon('name')"></i>
+          </th>
           <th>Email</th>
           <th>Position</th>
           <th>Department</th>
           <th>Salary</th>
-          <th>Hire Date</th>
+          <th
+            class="sortable"
+            (click)="sortBy('hireDate')"
+            [class.active]="sortColumn === 'hireDate'"
+          >
+            Hire Date
+            <i [class]="getSortIcon('hireDate')"></i>
+          </th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr
-          *ngFor="let employee of employees; trackBy: trackByEmployeeId"
+          *ngFor="let employee of sortedEmployees; trackBy: trackByEmployeeId"
           [class.inactive]="!employee.isActive"
         >
           <td class="employee-name">
@@ -62,7 +76,7 @@
       </tbody>
     </table>
 
-    <div *ngIf="employees.length === 0" class="empty-state">
+    <div *ngIf="sortedEmployees.length === 0" class="empty-state">
       <div class="empty-icon">👥</div>
       <h3>No employees found</h3>
       <p>Start by adding your first employee to the system.</p>
