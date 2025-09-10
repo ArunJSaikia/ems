@@ -56,3 +56,7 @@ ng s
 ### 5. Open Application-
 
 Navigate to `http://localhost:4200` in your browser.
+
+## Deployed in Vercel
+
+https://ems-seven-psi.vercel.app/dashboard
