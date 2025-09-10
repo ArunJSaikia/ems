@@ -60,7 +60,6 @@ export class EmployeeFormComponent {
     if (this.employee) {
       this.employeeForm.patchValue(this.employee);
     } else {
-      // Employee not found, redirect to dashboard
       this.router.navigate(["/dashboard"]);
     }
   }
@@ -95,7 +94,6 @@ export class EmployeeFormComponent {
         this.isSubmitting = false;
       }, 1000);
     } else {
-      // Mark all fields as touched to show validation errors
       Object.keys(this.employeeForm.controls).forEach((key) => {
         this.employeeForm.get(key)?.markAsTouched();
       });
@@ -107,12 +105,11 @@ export class EmployeeFormComponent {
   }
 
   private showSuccessMessage(message: string): void {
-    // You can implement a toast notification service here
+    alert(message);
     console.log(message);
   }
 
   private showErrorMessage(message: string): void {
-    // You can implement a toast notification service here
     console.error(message);
   }
 }

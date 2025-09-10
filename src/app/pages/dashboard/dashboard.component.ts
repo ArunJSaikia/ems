@@ -1,4 +1,3 @@
-// src/app/components/dashboard/dashboard.component.ts
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Employee } from "../../core/models/employee.interface";
@@ -86,7 +85,6 @@ export class DashboardComponent implements OnInit {
   private applyFilters(): void {
     let filtered = this.employees;
 
-    // Apply search filter
     if (this.searchTerm.trim()) {
       const term = this.searchTerm.toLowerCase();
       filtered = filtered.filter(
@@ -99,7 +97,6 @@ export class DashboardComponent implements OnInit {
       );
     }
 
-    // Apply department filter
     if (this.selectedDepartment) {
       filtered = filtered.filter(
         (emp) => emp.department === this.selectedDepartment,
@@ -114,7 +111,6 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    // Prepare data for Excel export
     const excelData = this.filteredEmployees.map((employee) => ({
       Name: `${employee.firstName} ${employee.lastName}`,
       Email: employee.email,
@@ -140,7 +136,6 @@ export class DashboardComponent implements OnInit {
   }
 
   exportToCsv(): void {
-    // Use the same filteredEmployees data that you pass to child component
     if (!this.filteredEmployees || this.filteredEmployees.length === 0) {
       alert("No employees to export");
       return;
